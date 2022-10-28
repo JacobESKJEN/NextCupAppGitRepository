@@ -58,8 +58,8 @@ def add_post():
 def remove_post(id):
     article = Feed.query.get(id)
     db.session.delete(article)
-    db.session.commit
+    db.session.commit()
     return article_schema.jsonify(article)
 
 if __name__ == "__main__":
-    app.run(host="192.168.0.100", port=3000, debug=True)
+    app.run(host="192.168.137.31", port=3000, debug=True)

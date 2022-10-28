@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import { StyleSheet, Text, View, FlatList, Pressable } from "react-native";
+import { StyleSheet, Text, View, FlatList, Pressable, Image } from "react-native";
+
+import pencil from "../assets/pencil.png";
 
 const renderData = (item) => {
   return (
@@ -20,12 +22,12 @@ const renderData = (item) => {
   );
 };
 
-function Feed() {
+function Feed(props) {
   const [feed, setFeed] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   
   const loadData = ()=>{
-    fetch("http://192.168.0.100:3000/get", {
+    fetch("http://192.168.137.31:3000/get", {
         method: "GET",
     })
     .then((resp=>resp.json()))
@@ -46,6 +48,13 @@ function Feed() {
         data={feed}
         renderItem={(item) => renderData(item)}
       />
+      <Pressable onPress={()=>{props.navigation.navigate("Post")}}>
+        <View style={style.PostButton}>
+          <Image  
+          source={pencil}
+          />
+        </View>
+      </Pressable>
     </View>
   );
 }
@@ -68,5 +77,16 @@ const style = StyleSheet.create({
   title: {
     color: "#000000",
     fontSize: 20,
+  },
+  PostButton: {
+    borderRadius: 90,
+    backgroundColor: "#5b8c63",
+    marginTop: "5%",
+    marginLeft: "65%",
+    marginRight: "8%",
+    marginBottom: "10%",
+    paddingVertical: "5%",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
