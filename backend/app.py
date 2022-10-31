@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 import datetime
 from flask_marshmallow import Marshmallow
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
@@ -19,16 +20,16 @@ class Feed(db.Model):
     pastDueDate = db.Column(db.String(100))
     adress = db.Column(db.String(100))
 
-    def __init__(self, title, description):
+    def __init__(self, title, description, pastDueDate, adress):
         self.title = title
         self.description = description
-        self.pastDueDate = "08/10-2022"
-        self.adress = "Jagtvej 163, 2100 København"
+        self.pastDueDate = pastDueDate
+        self.adress = adress
 class ArticleSchema(ma.Schema):
     class Meta:
         fields=("id", "title", "description", "date", "pastDueDate", "adress")
 
-article_schema = ArticleSchema
+article_schema = ArticleSchema()
 articles_schema = ArticleSchema(many=True)
 
 @app.route("/get", methods=["GET"])

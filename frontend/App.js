@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Feed from './components/Feed';
 import Post from './components/Post';
+import Details from './components/Details';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,6 +14,7 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen name="Feed" component={Feed}/>
         <Stack.Screen name="Post" component={Post}/>
+        <Stack.Screen name="Details" component={Details}/>
       </Stack.Navigator>
     </View>
   );

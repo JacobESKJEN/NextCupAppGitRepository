@@ -21,7 +21,7 @@ function Post(props) {
   const [adress, setAdress] = useState("");
 
   const Upload = ()=>{
-    fetch("192.168.137.31:3000/add", {
+    fetch("http://192.168.137.31:3000/add", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -31,9 +31,12 @@ function Post(props) {
     })
         .then((resp)=>resp.json())
         .then((data)=>{
-            props.navigation.navigate("Home");
+            props.navigation.navigate("Feed");
         })
-        .catch((error)=>console.log(error));
+        .catch((error)=>{
+          console.log(error)
+          props.navigation.navigate("Feed");
+        });
     }
   
 
