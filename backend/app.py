@@ -36,6 +36,7 @@ articles_schema = ArticleSchema(many=True)
 def get_posts():
     all_posts = Feed.query.all()
     results = articles_schema.dump(all_posts)
+    print("Get")
     return jsonify(results)
 
 @app.route("/get/<id>/", methods=["GET"])
@@ -63,4 +64,4 @@ def remove_post(id):
     return article_schema.jsonify(article)
 
 if __name__ == "__main__":
-    app.run(host="192.168.137.31", port=3000, debug=True)
+    app.run(host="172.20.10.2", port=3000, debug=True)

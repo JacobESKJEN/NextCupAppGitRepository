@@ -31,7 +31,7 @@ function Feed(props) {
     );
   };
   const tryAgain = ()=>{
-    fetch("http://192.168.137.31:3000/get", {
+    fetch("http://172.20.10.2:3000/get", {
         method: "GET",
     })
     .then((resp=>resp.json()))
@@ -44,7 +44,7 @@ function Feed(props) {
 
   const loadData = ()=>{
     console.log("Loading")
-    fetch("http://192.168.137.31:3000/get", {
+    fetch("http://172.20.10.2:3000/get", {
         method: "GET",
     })
     .then((resp=>resp.json()))

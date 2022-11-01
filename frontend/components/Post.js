@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Pressable, TextInput } from "react-native";
 
 function Upload(Title, Description, PastDueDate, Adress) {
-    fetch("192.168.137.31:3000/add", {
+    fetch("http://172.20.10.2:3000/add", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -21,7 +21,7 @@ function Post(props) {
   const [adress, setAdress] = useState("");
 
   const Upload = ()=>{
-    fetch("http://192.168.137.31:3000/add", {
+    fetch("http://172.20.10.2:3000/add", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -45,7 +45,7 @@ function Post(props) {
       <TextInput
         value={titleText}
         placeholder="Set title here"
-        style={styles.TitleInput}
+        style={styles.titleInput}
         onChangeText={setTitleText}
       />
       <TextInput
@@ -88,21 +88,44 @@ const styles = StyleSheet.create({
   },
   titleInput: {
     backgroundColor: "#ffffff",
-    fontSize: 30,
-    color: "#5b8c63"
+    marginTop: 10,
+    marginHorizontal: 20,
+    borderRadius: 35,
+    padding: 15,
+    //flex: 0.5
   },
   descriptionInput: {
-
+    backgroundColor: "#ffffff",
+    marginTop: 10,
+    marginHorizontal: 20,
+    borderRadius: 35,
+    padding: 15,
+    //flex: 1.5
   },
   pastDueDateInput: {
-
+    backgroundColor: "#ffffff",
+    marginTop: 10,
+    marginHorizontal: 20,
+    borderRadius: 35,
+    padding: 15,
+    //flex: 1
   },
   adressInput: {
-
+    backgroundColor: "#ffffff",
+    marginTop: 10,
+    marginHorizontal: 20,
+    borderRadius: 35,
+    padding: 15,
+    //flex: 1
+    //backgroundColor: "#ffffff",
+    //fontSize: 30,
+    //color: "#5b8c63"
   },
   postKnap:{
     backgroundColor: "#5b8c63",
-    borderRadius: 30,
-    paddingVertical: 10,
+    borderRadius: 50,
+    marginVertical: 30,
+    paddingVertical: 20,
+    //flex: 1
   }
 });

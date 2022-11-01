@@ -7,7 +7,7 @@ function Details(props){
 
     const removePost = (data)=>{
         console.log("Deleting");
-        fetch(`http://192.168.137.31:3000/delete/${data.id}/`,{
+        fetch(`http://172.20.10.2:3000/delete/${data.id}/`,{
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -59,9 +59,11 @@ const styles = StyleSheet.create({
     description: {
         marginVertical: 10,
         borderRadius: 30,
-        paddingVertical: 20,
+        paddingVertical: 13,
         backgroundColor: "#fff",
-        flex: 3
+        flex: 3,
+        paddingHorizontal: 12,
+        marginHorizontal: 10
     },
     buttonContainer: {
         flex: 1,
